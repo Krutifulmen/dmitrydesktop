@@ -1875,11 +1875,11 @@ QString TryConvertUrlToLocal(QString url) {
 			//}
 			return url;
 		} else if (const auto socksMatch = regex_match(u"^socks/?\\?(.+)(#|$)"_q, query, matchOptions)) {
-			return u"otg://socks?"_q + socksMatch->captured(1);
+			return u"dg://socks?"_q + socksMatch->captured(1);
 		} else if (const auto proxyMatch = regex_match(u"^proxy/?\\?(.+)(#|$)"_q, query, matchOptions)) {
-			return u"otg://proxy?"_q + proxyMatch->captured(1);
+			return u"dg://proxy?"_q + proxyMatch->captured(1);
 		} else if (const auto invoiceMatch = regex_match(u"^(invoice/|\\$)([a-zA-Z0-9_\\-]+)(\\?|#|$)"_q, query, matchOptions)) {
-			return u"otg://invoice?slug="_q + invoiceMatch->captured(2);
+			return u"dg://invoice?slug="_q + invoiceMatch->captured(2);
 		} else if (const auto bgMatch = regex_match(u"^bg/([a-zA-Z0-9\\.\\_\\-\\~]+)(\\?(.+)?)?$"_q, query, matchOptions)) {
 			const auto params = bgMatch->captured(3);
 			const auto bg = bgMatch->captured(1);
@@ -1889,16 +1889,16 @@ QString TryConvertUrlToLocal(QString url) {
 					|| regex_match(u"^[a-fA-F0-9]{6}(\\~[a-fA-F0-9]{6}){1,3}$"_q, bg))
 				? "gradient"
 				: "slug";
-			return u"otg://bg?"_q + type + '=' + bg + (params.isEmpty() ? QString() : '&' + params);
+			return u"dg://bg?"_q + type + '=' + bg + (params.isEmpty() ? QString() : '&' + params);
 		} else if (const auto chatlinkMatch = regex_match(u"^m/([a-zA-Z0-9\\.\\_\\-]+)(\\?|$)"_q, query, matchOptions)) {
 			const auto slug = chatlinkMatch->captured(1);
-			return u"otg://message?slug="_q + slug;
+			return u"dg://message?slug="_q + slug;
 		} else if (const auto nftMatch = regex_match(u"^nft/([a-zA-Z0-9\\.\\_\\-]+)(\\?|$)"_q, query, matchOptions)) {
 			const auto slug = nftMatch->captured(1);
-			return u"otg://nft?slug="_q + slug;
+			return u"dg://nft?slug="_q + slug;
 		} else if (const auto callMatch = regex_match(u"^call/([a-zA-Z0-9\\.\\_\\-]+)(\\?|$)"_q, query, matchOptions)) {
 			const auto slug = callMatch->captured(1);
-			return u"otg://call?slug="_q + slug;
+			return u"dg://call?slug="_q + slug;
 		} else if (const auto privateMatch = regex_match(u"^"
 			"c/(\\-?\\d+)"
 			"("
@@ -1911,9 +1911,9 @@ QString TryConvertUrlToLocal(QString url) {
 			const auto params = query.mid(privateMatch->captured(0).size()).toString();
 			if (params.indexOf("boost", 0, Qt::CaseInsensitive) >= 0
 				&& params.toLower().split('&').contains(u"boost"_q)) {
-				return u"otg://boost?channel="_q + channel;
+				return u"dg://boost?channel="_q + channel;
 			}
-			const auto base = u"otg://privatepost?channel="_q + channel;
+			const auto base = u"dg://privatepost?channel="_q + channel;
 			auto added = QString();
 			if (const auto threadPostMatch = regex_match(u"^/(\\d+)/(\\d+)(/?\\?|/?$)"_q, privateMatch->captured(2))) {
 				added = u"&topic=%1&post=%2"_q.arg(threadPostMatch->captured(1), threadPostMatch->captured(2));
@@ -1937,15 +1937,15 @@ QString TryConvertUrlToLocal(QString url) {
 			const auto params = query.mid(usernameMatch->captured(0).size()).toString();
 			if (params.indexOf("boost", 0, Qt::CaseInsensitive) >= 0
 				&& params.toLower().split('&').contains(u"boost"_q)) {
-				return u"otg://boost?domain="_q + domain;
+				return u"dg://boost?domain="_q + domain;
 			} else if (domain == u"boost"_q) {
 				if (const auto domainMatch = regex_match(u"^/([a-zA-Z0-9\\.\\_]+)(/?\\?|/?$)"_q, usernameMatch->captured(2))) {
-					return u"otg://boost?domain="_q + domainMatch->captured(1);
+					return u"dg://boost?domain="_q + domainMatch->captured(1);
 				} else if (params.indexOf("c=", 0, Qt::CaseInsensitive) >= 0) {
-					return u"otg://boost?"_q + params;
+					return u"dg://boost?"_q + params;
 				}
 			}
-			const auto base = u"otg://resolve?domain="_q + url_encode(usernameMatch->captured(1));
+			const auto base = u"dg://resolve?domain="_q + url_encode(usernameMatch->captured(1));
 			auto added = QString();
 			if (const auto threadPostMatch = regex_match(u"^/(\\d+)/(\\d+)(/?\\?|/?$)"_q, usernameMatch->captured(2))) {
 				added = u"&topic=%1&post=%2"_q.arg(threadPostMatch->captured(1), threadPostMatch->captured(2));
@@ -1968,10 +1968,10 @@ QString TryConvertUrlToLocal(QString url) {
 
 bool InternalPassportLink(const QString &url) {
 	const auto urlTrimmed = url.trimmed();
-	if (!urlTrimmed.startsWith(u"otg://"_q, Qt::CaseInsensitive)) {
+	if (!urlTrimmed.startsWith(u"dg://"_q, Qt::CaseInsensitive)) {
 		return false;
 	}
-	const auto command = base::StringViewMid(urlTrimmed, u"otg://"_q.size());
+	const auto command = base::StringViewMid(urlTrimmed, u"dg://"_q.size());
 
 	using namespace qthelp;
 	const auto matchOptions = RegExOption::CaseInsensitive;
