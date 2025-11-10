@@ -28,38 +28,38 @@ struct BuiltInDc {
 	int port;
 };
 
-#define IpV4 "192.168.1.100"
-#define IpV6 "192.168.1.100"
+#define IpV4 "31.15.17.228"
+#define IpV6 "2a13:7c00:4:24:f816:3eff:fe24:ee0"
 #define IpV4Port 20443
 #define IpV4Port2 20443
 #define IpV6Port 20443
 #define IpV6Port2 20443
 const BuiltInDc kBuiltInDcs[] = {
-	{ 1, IpV4 , IpV4Port },
-	{ 2, IpV4 , IpV4Port },
-	{ 3, IpV4, IpV4Port2 },
-	//{ 4, IpV4 , IpV4Port },
-	//{ 5, IpV4  , IpV4Port },
+							{ 1, IpV4 , IpV4Port },
+							{ 2, IpV4 , IpV4Port },
+							{ 3, IpV4, IpV4Port2 },
+							//{ 4, IpV4 , IpV4Port },
+							//{ 5, IpV4  , IpV4Port },
 };
 
 const BuiltInDc kBuiltInDcsIPv6[] = {
-	{ 1, IpV6, IpV6Port },
-	{ 2, IpV6, IpV6Port },
-	{ 3, IpV6, IpV6Port2 },
-	//{ 4, IpV6, IpV6Port },
-	//{ 5, IpV6, IpV6Port },
+							{ 1, IpV6, IpV6Port },
+							{ 2, IpV6, IpV6Port },
+							{ 3, IpV6, IpV6Port2 }
+							//{ 4, IpV6, IpV6Port },
+							//{ 5, IpV6, IpV6Port },
 };
 
 const BuiltInDc kBuiltInDcsTest[] = {
-	{ 1, IpV4 , IpV4Port },
-	{ 2, IpV4 , IpV4Port },
-	{ 3, IpV4, IpV4Port2 },
+							{ 1, IpV4, IpV4Port },
+							{ 2, IpV4, IpV4Port },
+							{ 3, IpV4, IpV4Port2 }
 };
 
 const BuiltInDc kBuiltInDcsIPv6Test[] = {
-	{ 1, IpV6, IpV6Port },
-	{ 2, IpV6, IpV6Port },
-	{ 3, IpV6, IpV6Port2 },
+							{ 1, IpV6, IpV6Port },
+							{ 2, IpV6, IpV6Port },
+							{ 3, IpV6, IpV6Port2 }
 };
 
 const char *kTestPublicRSAKeys[] = { "\
