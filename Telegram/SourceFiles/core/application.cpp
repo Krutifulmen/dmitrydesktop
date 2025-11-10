@@ -132,7 +132,7 @@ void SetCrashAnnotationsGL() {
 base::options::toggle OptionSkipUrlSchemeRegister({
 	.id = kOptionSkipUrlSchemeRegister,
 	.name = "Skip URL scheme register",
-	.description = "Don't re-register otg:// URL scheme on autoupdate.",
+	.description = "Don't re-register dg:// URL scheme on autoupdate.",
 });
 
 } // namespace
