@@ -1106,7 +1106,7 @@ void Application::checkStartUrls() {
 }
 
 bool Application::openLocalUrl(const QString &url, QVariant context) {
-	return openCustomUrl("otg://", LocalUrlHandlers(), url, context);
+	return openCustomUrl("dg://", LocalUrlHandlers(), url, context);
 }
 
 bool Application::openInternalUrl(const QString &url, QVariant context) {
@@ -1832,9 +1832,9 @@ void Application::RegisterUrlScheme() {
 	base::Platform::RegisterUrlScheme(base::Platform::UrlSchemeDescriptor{
 		.executable = Platform::ExecutablePathForShortcuts(),
 		.arguments = arguments,
-		.protocol = u"otg"_q,
-		.protocolName = u"Opengram Link"_q,
-		.shortAppName = u"odesktop"_q,
+		.protocol = u"dg"_q,
+		.protocolName = u"DmitryGram Link"_q,
+		.shortAppName = u"Ddesktop"_q,
 		.longAppName = QCoreApplication::applicationName(),
 		.displayAppName = AppName.utf16(),
 		.displayAppDescription = AppName.utf16(),
@@ -1845,7 +1845,7 @@ void Application::RegisterUrlScheme() {
 		.arguments = arguments,
 		.protocol = u"tonsite"_q,
 		.protocolName = u"TonSite Link"_q,
-		.shortAppName = u"odesktop"_q,
+		.shortAppName = u"Ddesktop"_q,
 		.longAppName = QCoreApplication::applicationName(),
 		.displayAppName = AppName.utf16(),
 		.displayAppDescription = AppName.utf16(),
