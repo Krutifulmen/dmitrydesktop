@@ -1838,7 +1838,7 @@ QString TryConvertUrlToLocal(QString url) {
 				+ name
 				+ subdomainMatch->captured(3)
 				+ subdomainMatch->captured(4));
-			return result.startsWith("otg://resolve?domain=")
+			return result.startsWith("dg://resolve?domain=")
 				? result
 				: url;
 		}
@@ -1848,21 +1848,21 @@ QString TryConvertUrlToLocal(QString url) {
 		const auto query = telegramMeMatch->capturedView(5);
 		if (const auto phoneMatch = regex_match(u"^\\+([0-9]+)(\\?|$)"_q, query, matchOptions)) {
 			const auto params = query.mid(phoneMatch->captured(0).size()).toString();
-			return u"otg://resolve?phone="_q + phoneMatch->captured(1) + (params.isEmpty() ? QString() : '&' + params);
+			return u"dg://resolve?phone="_q + phoneMatch->captured(1) + (params.isEmpty() ? QString() : '&' + params);
 		} else if (const auto joinChatMatch = regex_match(u"^(joinchat/|\\+|\\%20)([a-zA-Z0-9\\.\\_\\-]+)(\\?|$)"_q, query, matchOptions)) {
-			return u"otg://join?invite="_q + url_encode(joinChatMatch->captured(2));
+			return u"dg://join?invite="_q + url_encode(joinChatMatch->captured(2));
 		} else if (const auto joinFilterMatch = regex_match(u"^(addlist/)([a-zA-Z0-9\\.\\_\\-]+)(\\?|$)"_q, query, matchOptions)) {
-			return u"otg://addlist?slug="_q + url_encode(joinFilterMatch->captured(2));
+			return u"dg://addlist?slug="_q + url_encode(joinFilterMatch->captured(2));
 		} else if (const auto stickerSetMatch = regex_match(u"^(addstickers|addemoji)/([a-zA-Z0-9\\.\\_]+)(\\?|$)"_q, query, matchOptions)) {
-			return u"otg://"_q + stickerSetMatch->captured(1) + "?set=" + url_encode(stickerSetMatch->captured(2));
+			return u"dg://"_q + stickerSetMatch->captured(1) + "?set=" + url_encode(stickerSetMatch->captured(2));
 		} else if (const auto themeMatch = regex_match(u"^addtheme/([a-zA-Z0-9\\.\\_]+)(\\?|$)"_q, query, matchOptions)) {
-			return u"otg://addtheme?slug="_q + url_encode(themeMatch->captured(1));
+			return u"dg://addtheme?slug="_q + url_encode(themeMatch->captured(1));
 		} else if (const auto languageMatch = regex_match(u"^setlanguage/([a-zA-Z0-9\\.\\_\\-]+)(\\?|$)"_q, query, matchOptions)) {
-			return u"otg://setlanguage?lang="_q + url_encode(languageMatch->captured(1));
+			return u"dg://setlanguage?lang="_q + url_encode(languageMatch->captured(1));
 		} else if (const auto shareUrlMatch = regex_match(u"^share/url/?\\?(.+)$"_q, query, matchOptions)) {
-			return u"otg://msg_url?"_q + shareUrlMatch->captured(1);
+			return u"dg://msg_url?"_q + shareUrlMatch->captured(1);
 		} else if (const auto confirmPhoneMatch = regex_match(u"^confirmphone/?\\?(.+)"_q, query, matchOptions)) {
-			return u"otg://confirmphone?"_q + confirmPhoneMatch->captured(1);
+			return u"dg://confirmphone?"_q + confirmPhoneMatch->captured(1);
 		} else if (const auto ivMatch = regex_match(u"^iv/?\\?(.+)(#|$)"_q, query, matchOptions)) {
 			//
 			// We need to show our t.me page, not the url directly.
