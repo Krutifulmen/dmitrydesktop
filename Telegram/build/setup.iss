@@ -1,8 +1,8 @@
-#define MyAppShortName "Opengram"
-#define MyAppName "Opengram Desktop"
-#define MyAppPublisher "Opengram"
-#define MyAppURL "https://opengra.me/"
-#define MyAppExeName "Opengram.exe"
+#define MyAppShortName "DmitryGram"
+#define MyAppName "DmitryGram Desktop"
+#define MyAppPublisher "DmitryGram"
+#define MyAppURL "https://31.15.17.228/"
+#define MyAppExeName "DmitryGram.exe"
 #define MyAppId "53F49750-6209-4FBF-9CA8-7A333C87D1ED"
 #define CurrentYear GetDateTimeString('yyyy','','')
 
@@ -24,7 +24,7 @@ AllowNoIcons=yes
 OutputDir={#ReleasePath}
 SetupIconFile={#SourcePath}..\Resources\art\icon256.ico
 UninstallDisplayName={#MyAppName}
-UninstallDisplayIcon={app}\Opengram.exe
+UninstallDisplayIcon={app}\DmitryGram.exe
 Compression=lzma
 SolidCompression=yes
 DisableStartupPrompt=yes
@@ -70,7 +70,7 @@ Name: "ua";      MessagesFile: "compiler:Languages\Ukrainian.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"
 
 [Files]
-Source: "{#ReleasePath}\Opengram.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#ReleasePath}\DmitryGram.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#ReleasePath}\Updater.exe"; DestDir: "{app}"; Flags: ignoreversion
 #if MyBuildTarget != "winarm"
 Source: "{#ReleasePath}\{#ModulesFolder}\d3d\d3dcompiler_47.dll"; DestDir: "{app}\{#ModulesFolder}\d3d"; Flags: ignoreversion
