@@ -1,9 +1,9 @@
-#define MyAppShortName "DmitryGram"
-#define MyAppName "DmitryGram Desktop"
-#define MyAppPublisher "DmitryGram"
-#define MyAppURL "https://31.15.17.228/"
-#define MyAppExeName "DmitryGram.exe"
-#define MyAppId "53F49750-6209-4FBF-9CA8-7A333C87D1ED"
+#define MyAppShortName "KrutiGram"
+#define MyAppName "KrutiGram Desktop"
+#define MyAppPublisher "Krutifulmen"
+#define MyAppURL "https://144.31.48.79/"
+#define MyAppExeName "KrutiGram.exe"
+#define MyAppId "418e7612-1dff-4b9c-a01e-f97059757ea4"
 #define CurrentYear GetDateTimeString('yyyy','','')
 
 [Setup]
@@ -24,7 +24,7 @@ AllowNoIcons=yes
 OutputDir={#ReleasePath}
 SetupIconFile={#SourcePath}..\Resources\art\icon256.ico
 UninstallDisplayName={#MyAppName}
-UninstallDisplayIcon={app}\DmitryGram.exe
+UninstallDisplayIcon={app}\ЛкгешGram.exe
 Compression=lzma
 SolidCompression=yes
 DisableStartupPrompt=yes
